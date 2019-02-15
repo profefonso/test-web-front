@@ -1,0 +1,35 @@
+<br>
+<h1>Listado de Topics</h1>
+<br>
+<div class="row">
+  <div class="col">
+    <a href="topic/" class="btn btn-outline-success float-right mb-3">+ Topic</a>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Departamento</th>
+          <th scope="col">Municipio</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let topic of topics.results">
+          <th scope="row">{{topic.id}}</th>
+          <td>{{topic.date}}</td>
+          <td>{{topic.location.district_name}}</td>
+          <td>{{topic.location.municipality_name}}</td>
+          <td>{{topic.tags}}</td>
+          <td>
+            <a routerLink="/topic" class="btn btn-outline-danger" (click)="onUpdateTopic(topic.id)">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <button *ngIf="topics.previous" class="btn btn-outline-primary mb-3" (click)="goToPageTopics(topics.previous)"><<</button>
+    <button *ngIf="topics.next" class="btn btn-outline-primary float-right mb-3"(click)="goToPageTopics(topics.next)">>></button>
+  </div>
+</div>
