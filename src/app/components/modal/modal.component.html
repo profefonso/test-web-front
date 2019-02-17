@@ -1,0 +1,53 @@
+<div class="modal fade" id="ModalTopic" tabindex="-1" role="dialog" aria-labelledby="ModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLongTitle">Topic</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-topic" #formTopic="ngForm" (ngSubmit)="saveTopic(formTopic)">
+            <div class="form group">
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="">Fecha</label>
+                    <input type="date" id="date" name="date" class="form-control" placeholder="Fecha" [(ngModel)]="this.dataApiService.currentTopic.date">
+                    <input type="hidden" id="state" name="state" class="form-control" [(ngModel)]="this.dataApiService.currentTopic.state">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                      <label for="select_district">Departamento</label>
+                      <select class="form-control" id="select_district">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="municipality">Municipio</label>
+                      <select class="form-control" id="municipality" name="municipality" [(ngModel)]="this.dataApiService.currentTopic.municipality">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <input type="text" id="tags" name="tags" class="form-control" placeholder="TAGS" [(ngModel)]="this.dataApiService.currentTopic.tags">
+                      </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,11 +8,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataApiService {
+
+  constructor(private http: HttpClient) {}
+
   topics: Observable<any>;
   districs: Observable<any>;
   municipalitys: Observable<any>;
 
-  constructor(private http: HttpClient) { }
+  public currentTopic: TopicInterface = {
+    date: null,
+    tags: '',
+    state: 'active',
+    municipality: null,
+  };
+
   headers : HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json'
   })

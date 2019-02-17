@@ -9,7 +9,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { Page404Component } from './components/page404/page404.component';
 import { DataApiService } from './services/data-api.service';
-
+import { ModalComponent } from './components/modal/modal.component';
+import { FormsModule }   from '@angular/forms';
 
 
 @NgModule({
@@ -18,11 +19,13 @@ import { DataApiService } from './services/data-api.service';
     HomeComponent,
     NavbarComponent,
     TopicComponent,
-    Page404Component
+    Page404Component,
+    ModalComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [DataApiService],
