@@ -47,8 +47,8 @@ export class DataApiService {
   }
 
   getFilterMunicipalitys(id: string){
-    const url_api = 'http://localhost:8000/municipality/?id_district=${id}';
-    return (this.municipalitys = this.http.get(url_api));
+    const url_api = 'http://localhost:8000/municipality/?id_district='+id;
+    return (this.http.get(url_api));
   }
 
   saveTopic(topic: TopicInterface){

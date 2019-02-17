@@ -11,16 +11,36 @@ import { Location } from '@angular/common';
 })
 export class ModalComponent implements OnInit {
 
+  public minDate: Date = new Date ("01/01/2000");
+  public maxDate: Date = new Date ();
+  public value: Date = new Date ();
+
+  districts: any;
+  municipalities: any[];
+  selectedDistrict = '0';
+
   constructor(
     private dataApiService: DataApiService,
     private location: Location
-    ) { }
+    ) { 
+      this.getDistricts();
+    }
 
   ngOnInit() {
   }
 
+  getDistricts(): void{
+    this.dataApiService.getAllDistricts()
+    .subscribe(districts  => (this.districts = districts));
+  }
+
+  onSelectDistrict(district_id: string) {
+    this.selectedDistrict = district_id;
+    this.dataApiService.getFilterMunicipalitys(district_id)
+    .subscribe(municipalities  => (this.municipalities = municipalities));
+  }
+
   saveTopic(topicForm: NgForm): void {
-    console.log(topicForm);
     this.dataApiService.saveTopic(topicForm.value).subscribe(topic => location.reload());
   }
 

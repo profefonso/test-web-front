@@ -10,42 +10,43 @@
       <div class="modal-body">
         <form class="form-topic" #formTopic="ngForm" (ngSubmit)="saveTopic(formTopic)">
             <div class="form group">
+              <div class="row">
+                  <div class="form-group col-md-12">
+                      
+                    </div>
+              </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">Fecha</label>
-                    <input type="date" id="date" name="date" class="form-control" placeholder="Fecha" [(ngModel)]="this.dataApiService.currentTopic.date">
+                    <ejs-datepicker id="date" name="date" placeholder='Fecha' [(ngModel)]="this.dataApiService.currentTopic.date" format='yyyy-MM-dd' [value]='value' [min]='minDate' [max]='maxDate'></ejs-datepicker>
                     <input type="hidden" id="state" name="state" class="form-control" [(ngModel)]="this.dataApiService.currentTopic.state">
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                       <label for="select_district">Departamento</label>
-                      <select class="form-control" id="select_district">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                      <select class="form-control" id="select_district" (change)="onSelectDistrict($event.target.value)">
+                          <option value="None">-- Seleccione --</option>
+                          <option [value]="district.id" *ngFor="let district of districts">{{district.name}}</option>
                       </select>
                   </div>
                   <div class="form-group col-md-6">
                       <label for="municipality">Municipio</label>
                       <select class="form-control" id="municipality" name="municipality" [(ngModel)]="this.dataApiService.currentTopic.municipality">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                          <option value="None">-- Seleccione --</option>
+                          <option [value]="municipality.id" *ngFor="let municipality of municipalities">{{municipality.name}}</option>
                       </select>
                   </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
+                        <label for="tags">TAGS</label>
                         <input type="text" id="tags" name="tags" class="form-control" placeholder="TAGS" [(ngModel)]="this.dataApiService.currentTopic.tags">
                       </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+            <hr>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </form>
       </div>
     </div>
