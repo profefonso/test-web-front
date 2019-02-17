@@ -14,6 +14,7 @@ export class DataApiService {
   topics: Observable<any>;
   districs: Observable<any>;
   municipalitys: Observable<any>;
+  tags: Observable<any>;
 
   public currentTopic: TopicInterface = {
     date: null,
@@ -44,6 +45,11 @@ export class DataApiService {
   getAllMunicipalitys(){
     const url_api = 'http://localhost:8000/municipality/';
     return (this.municipalitys = this.http.get(url_api));
+  }
+
+  getAlltags(){
+    const url_api = 'http://localhost:8000/tag/';
+    return (this.tags = this.http.get(url_api));
   }
 
   getFilterMunicipalitys(id: string){

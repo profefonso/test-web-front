@@ -12,6 +12,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { DataApiService } from './services/data-api.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { FormsModule }   from '@angular/forms';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule }   from '@angular/forms';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    DatePickerModule
+    DatePickerModule,
+    AutocompleteLibModule
   ],
   providers: [DataApiService],
   bootstrap: [AppComponent]

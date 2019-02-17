@@ -21,9 +21,11 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "@syncfusion/ej2-angular-calendars": "^16.4.53",
+    "angular-ng-autocomplete": "^1.1.8",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "jquery": "^3.3.1",
+    "ng-auto-complete": "^4.1.4",
     "popper.js": "^1.14.7",
     "rxjs": "6.0.0",
     "zone.js": "~0.8.26"

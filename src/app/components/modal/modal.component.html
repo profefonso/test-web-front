@@ -8,13 +8,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+              {{text_error}}
+        </div>
         <form class="form-topic" #formTopic="ngForm" (ngSubmit)="saveTopic(formTopic)">
             <div class="form group">
-              <div class="row">
-                  <div class="form-group col-md-12">
-                      
-                    </div>
-              </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="">Fecha</label>
@@ -41,7 +39,35 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="tags">TAGS</label>
-                        <input type="text" id="tags" name="tags" class="form-control" placeholder="TAGS" [(ngModel)]="this.dataApiService.currentTopic.tags">
+                        
+                      </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <div class="ng-autocomplete">
+                            <ng-autocomplete
+                              id="tags" 
+                              name="tags"
+                              [data]="tags"
+                              [searchKeyword]="keyword"
+                              placeHolder="Seleccione Tag"
+                              (selected)='selectEvent($event)'
+                              (inputChanged)='onChangeSearch($event)'
+                              (inputFocused)='onFocused($event)'
+                              historyIdentifier="tags"
+                              [itemTemplate]="itemTemplate"
+                              [notFoundTemplate]="notFoundTemplate"
+                              [(ngModel)]="this.dataApiService.currentTopic.tags">
+                            </ng-autocomplete>
+                          
+                            <ng-template #itemTemplate let-item>
+                              <a [innerHTML]="item.name"></a>
+                            </ng-template>
+                          
+                            <ng-template #notFoundTemplate let-notFound>
+                              <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                          </div>
                       </div>
                 </div>
             </div>
